@@ -61,6 +61,7 @@ def subprocess_run(
             for out, log_function in [(std_out, stdout_log), (std_err, stderr_log)]:
                 if out is not None and len(out.strip()) > 0:
                     log_function(out)
+                    log_function(f"cmd={str(cmd)}")
 
         # log, and possibly print, each line of output from the process
         for name, std_x, f in [("stdout", std_out, sys.stdout), ("stderr", std_err, sys.stderr)]:
